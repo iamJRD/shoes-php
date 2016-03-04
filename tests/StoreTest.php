@@ -121,5 +121,23 @@
             // Assert
             $this->assertEquals($test_store, $result);
         }
+
+        function testUpdate()
+        {
+            // Arrange
+            $id = 1;
+            $name = "The Shoe Emporium";
+            $test_store = new Store($id, $name);
+            $test_store->save();
+
+            $new_name = "Shoe Palace";
+
+            // Act
+            $test_store->update($new_name);
+
+            // Assert
+            $result = $test_store->getName();
+            $this->assertEquals($new_name, $result);
+        }
     }
 ?>
