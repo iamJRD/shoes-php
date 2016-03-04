@@ -22,7 +22,7 @@
         {
             // Arrange
             $id = 1;
-            $name = "Jared's Shoe Emporium";
+            $name = "The Shoe Emporium";
             $test_store = new Store($id, $name);
 
             // Act
@@ -36,7 +36,7 @@
         {
             // Arrange
             $id = 1;
-            $name = "Jared's Shoe Emporium";
+            $name = "The Shoe Emporium";
             $test_store = new Store($id, $name);
 
             // Act
@@ -45,12 +45,12 @@
             // Assert
             $this->assertEquals($id, $result);
         }
-
+// CANNOT HAVE POSSESSIVES IN TESTS!!!!!
         function testSave()
         {
             // Arrange
             $id = 1;
-            $name = "Jared's Shoe Emporium";
+            $name = "The Shoe Emporium";
             $test_store = new Store($id, $name);
 
             // Act
@@ -60,17 +60,17 @@
             $result = Store::getAll();
             $this->assertEquals($test_store, $result[0]);
         }
-
+        
         function testGetAll()
         {
             // Arrange
             $id = 1;
-            $name = "Jared's Shoe Emporium";
+            $name = "The Shoe Emporium";
             $test_store = new Store($id, $name);
             $test_store->save();
 
             $id2 = 2;
-            $name2 = "Drew's Shoes";
+            $name2 = "The Blue Shoe";
             $test_store2 = new Store($id2, $name2);
             $test_store2->save();
 
@@ -85,12 +85,12 @@
         {
             // Arrange
             $id = 1;
-            $name = "Jared's Shoe Emporium";
+            $name = "The Shoe Emporium";
             $test_store = new Store($id, $name);
             $test_store->save();
 
             $id2 = 2;
-            $name2 = "Drew's Shoes";
+            $name2 = "The Blue Shoe";
             $test_store2 = new Store($id2, $name2);
             $test_store2->save();
 

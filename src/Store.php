@@ -40,7 +40,7 @@
             {
                 $id = $store['id'];
                 $name = $store['name'];
-                $new_store = new Brand($id, $name);
+                $new_store = new Store($id, $name);
                 array_push($stores, $new_store);
             }
             return $stores;
