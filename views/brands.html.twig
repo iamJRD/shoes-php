@@ -18,19 +18,27 @@
                 <h4>There are no brands added yet! Use the form below to start adding some!</h4>
             {% endif %}
 
+            <br>
+
             <div class="row">
                 <form action="/add_brand" method="post">
-                        <div class="col-sm-6">
-                            <label for="name">Brand Name</label>
-                            <input name="name" type="text" class="form-control" placeholder="Brand Name" required>
-                        </div>
+                    <div class="col-sm-6">
+                        <label for="name">Brand Name:</label>
+                        <input name="name" type="text" class="form-control" placeholder="Brand Name" required>
+                    </div>
             </div>
                     <button class="btn btn-success" type="submit" name="action">Add Brand</button>
                 </form>
 
+                <br>
+                <br>
+                <br>
+
                 <form action="/delete_brands" method="post">
                         <button class="btn btn-danger" type="submit">Delete ALL Brands</button>
                 </form>
+
+                <br>
 
             {% include 'footer.html' %}
         </div>

@@ -18,6 +18,8 @@
                 <h4>There are no stores added yet! Use the form below to start adding some!</h4>
             {% endif %}
 
+            <br>
+
             <div class="row">
                 <form action="/add_store" method="post">
                     <div class="col-sm-6">
@@ -28,9 +30,15 @@
                     <button type="submit" class="btn btn-success">Submit</button>
                 </form>
 
-                <form action="/delete_stores" method="post">
-                        <button class="btn btn-danger" type="submit">Delete ALL Stores</button>
-                </form>
+            <br>
+            <br>
+            <br>
+
+            <form action="/delete_stores" method="post">
+                    <button class="btn btn-danger" type="submit">Delete ALL Stores</button>
+            </form>
+
+            <br>
 
             {% include 'footer.html' %}
         </div>

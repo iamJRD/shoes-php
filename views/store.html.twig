@@ -19,6 +19,8 @@
                 <h4>This store currently doesn't have any brands assigned to it! Use the dropdown below add a brand!</h4>
             {% endif %}
 
+            <br>
+
             <h3>Add a brand</h3>
             <form action="/store/{{ store.getId }}/add_brand" method="post">
                 <input id="store_id" = name="store_id" type="hidden" value="{{ store.getId }}">
@@ -39,7 +41,7 @@
                 <input type="hidden" name="_method" value="patch">
 
                 <label for='new_name'>New Store Name:</label>
-                <input id='new_name' name='new_name' type='text' value="{{ store.getName}}" required>
+                <input name='new_name' type='text' value="{{ store.getName}}" required>
 
                 <button type='submit' class="btn btn-primary">Update Store</button>
             </form>
@@ -52,6 +54,9 @@
                 <input type="hidden" name="_method" value="delete">
                 <button class="btn btn-danger" type="submit">Delete THIS Store</button>
             </form>
+
+            <br>
+
             {% include 'footer.html' %}
         </div>
     </body>

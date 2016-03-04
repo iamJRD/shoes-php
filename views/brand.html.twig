@@ -19,6 +19,8 @@
                 <h4>This brand currently doesn't have any stores assigned to it! Use the dropdown below add a store!</h4>
             {% endif %}
 
+            <br>
+
             <h3>Add a store</h3>
             <div class="row">
                 <form action="/brand/{{ brand.getId }}/add_store" method="post">
@@ -37,10 +39,9 @@
                     <button type="submit" class="btn btn-success">Add Store</button>
                 </form>
 
-                <!-- <form action="/brand/ brand.getId /delete" method="post">
-                    <input type="hidden" name="_method" value="delete">
-                    <button class="btn btn-danger" type="submit">Delete THIS Brand</button>
-                </form> -->
+                <br>
+                <br>
+
             {% include 'footer.html' %}
         </div>
     </body>

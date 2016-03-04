@@ -32,7 +32,9 @@
     $app->post("/add_store", function() use ($app) {
         $id = null;
         $name = $_POST['name'];
-        $new_store = new Store($id, $name);
+        $formatted_name = preg_replace('/[ ](?=[ ])|[^-_,A-Za-z0-9 ]+/', '', $name);
+        $store_name = ucfirst($formatted_name);
+        $new_store = new Store($id, $store_name);
         $new_store->save();
 
         $stores = Store::getAll();
@@ -87,7 +89,9 @@
     $app->post("/add_brand", function() use ($app) {
         $id = null;
         $name = $_POST['name'];
-        $new_brand = new Brand($id, $name);
+        $formatted_name = preg_replace('/[ ](?=[ ])|[^-_,A-Za-z0-9 ]+/', '', $name);
+        $brand_name = ucfirst($formatted_name);
+        $new_brand = new Brand($id, $brand_name);
         $new_brand->save();
 
         $brands = Brand::getAll();
@@ -110,7 +114,7 @@
     });
 
     $app->post("/brand/{id}/add_store", function($id) use ($app) {
-        $store = Store::find($_POST['brand_id']);
+        $store = Store::find($_POST['store_id']);
         $brand = Brand::find($_POST['brand_id']);
         $brand->addStore($store);
         $stores = $brand->getStores();
