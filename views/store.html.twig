@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% include 'header.html' %}
+        <title>{{ store.getName }}</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>{{ store.getName }}</h1>
+
+            {% if brands is not empty %}
+                <h4>Here are all of the brands that {{ store.getName }} carries:</h4>
+                <ul>
+                    {% for brand in brands %}
+                        <li><a href="/brand/{{ brand.getId }}">{{ brand.getName }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <h4>This store currently doesn't have any brands assigned to it! Use the dropdown below add a brand!</h4>
+            {% endif %}
+
+            <h3>Add a brand</h3>
+            <form action="/store_add_brand" class="input-field col s12" method="post">
+                <input id="store_id" = name="store_id" type="hidden" value="{{ store.getId }}">
+
+                <label for="brand_id">Select a brand</label>
+                <select name="brand_id" type="text" required>
+                        {% for brand in all_brands %}
+                            <option value="{{ brand.getId }}">{{ brand.getName }}</option>
+                        {% endfor %}
+                </select>
+
+                <button type="submit">Add Brand</button>
+            </form>
+        </div>
+    </body>
+</html>
