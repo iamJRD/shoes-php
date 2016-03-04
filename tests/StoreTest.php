@@ -60,7 +60,7 @@
             $result = Store::getAll();
             $this->assertEquals($test_store, $result[0]);
         }
-        
+
         function testGetAll()
         {
             // Arrange
@@ -100,6 +100,26 @@
             // Assert
             $result = Store::getAll();
             $this->assertEquals([], $result);
+        }
+
+        function testFind()
+        {
+            // Arrange
+            $id = 1;
+            $name = "The Shoe Emporium";
+            $test_store = new Store($id, $name);
+            $test_store->save();
+
+            $id2 = 2;
+            $name2 = "The Blue Shoe";
+            $test_store2 = new Store($id2, $name2);
+            $test_store2->save();
+
+            // Act
+            $result = Store::find($test_store->getId());
+
+            // Assert
+            $this->assertEquals($test_store, $result);
         }
     }
 ?>
