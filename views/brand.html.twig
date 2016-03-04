@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% include 'header.html' %}
+        <title>{{ brand.getName }}</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>{{ brand.getName }}</h1>
+
+            {% if stores is not empty %}
+                <h4>Here are all of the stores that carry {{ brand.getName }}:</h4>
+                <ul>
+                    {% for store in stores %}
+                        <li><a href="/store/{{ store.getId }}">{{ store.getName }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <h4>This brand currently doesn't have any stores assigned to it! Use the dropdown below add a store!</h4>
+            {% endif %}
+
+            <h3>Add a store</h3>
+            <div class="row">
+                <form action="/brand/{{ brand.getId }}/add_store" method="post">
+                    <input id="brand_id" = name="brand_id" type="hidden" value="{{ brand.getId }}">
+
+                    <div class="col-sm-6">
+                        <label>Add Store</label>
+                        <select name="store_id" type="text" required>
+                                <option value="" disabled selected>Choose a store to add</option>
+                            {% for store in all_stores %}
+                                <option value="{{ store.getId }}">{{ store.getName }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+            </div>
+                    <button type="submit" class="btn btn-success">Add Store</button>
+                </form>
+
+                <!-- <form action="/brand/ brand.getId /delete" method="post">
+                    <input type="hidden" name="_method" value="delete">
+                    <button class="btn btn-danger" type="submit">Delete THIS Brand</button>
+                </form> -->
+            {% include 'footer.html' %}
+        </div>
+    </body>
+</html>

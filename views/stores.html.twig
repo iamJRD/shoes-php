@@ -6,6 +6,7 @@
     </head>
     <body>
         <div class="container">
+            <h1>Stores</h1>
             {% if stores is not empty %}
                 <h2>Here are all of the stores!</h2>
                 <ul>
@@ -18,22 +19,18 @@
             {% endif %}
 
             <div class="row">
-                <form class="col s12" action="/add_store" method="post">
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <label for="name">Store Name</label>
-                            <input name="name" type="text" class="validate" required>
-                        </div>
+                <form action="/add_store" method="post">
+                    <div class="col-sm-6">
+                        <label for="name">Store Name:</label>
+                        <input name="name" type="text" class="form-control" placeholder="Store Name" required>
                     </div>
-                    <button class="btn waves-effect waves-light submit-button" type="submit" name="action">Add Store</button>
-                </form>
             </div>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </form>
 
-            <div class="row">
-                <form class="col s12" action="/delete_stores" method="post">
-                    <button class="btn waves-effect waves-light delete-button" type="submit">Delete ALL Stores</button>
+                <form action="/delete_stores" method="post">
+                        <button class="btn btn-danger" type="submit">Delete ALL Stores</button>
                 </form>
-            </div>
 
             {% include 'footer.html' %}
         </div>

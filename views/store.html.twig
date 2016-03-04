@@ -20,18 +20,39 @@
             {% endif %}
 
             <h3>Add a brand</h3>
-            <form action="/store_add_brand" class="input-field col s12" method="post">
+            <form action="/store/{{ store.getId }}/add_brand" method="post">
                 <input id="store_id" = name="store_id" type="hidden" value="{{ store.getId }}">
-
-                <label for="brand_id">Select a brand</label>
-                <select name="brand_id" type="text" required>
+                    <label>Add Brand</label>
+                    <select name="brand_id" type="text" required>
+                            <option value="" disabled selected>Choose a brand to add</option>
                         {% for brand in all_brands %}
                             <option value="{{ brand.getId }}">{{ brand.getName }}</option>
                         {% endfor %}
-                </select>
-
-                <button type="submit">Add Brand</button>
+                    </select>
+                <button type="submit" class="btn btn-success">Add Brand</button>
             </form>
+
+            <br>
+
+            <h5>Edit your store here:</h5>
+            <form action="/store/{{ store.getId }}/update" method="post">
+                <input type="hidden" name="_method" value="patch">
+
+                <label for='new_name'>New Store Name:</label>
+                <input id='new_name' name='new_name' type='text' value="{{ store.getName}}" required>
+
+                <button type='submit' class="btn btn-primary">Update Store</button>
+            </form>
+
+            <br>
+            <br>
+            <br>
+
+            <form action="/store/{{ store.getId }}/delete" method="post">
+                <input type="hidden" name="_method" value="delete">
+                <button class="btn btn-danger" type="submit">Delete THIS Store</button>
+            </form>
+            {% include 'footer.html' %}
         </div>
     </body>
 </html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% include 'header.html' %}
+        <title>Shoe Finder</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Brands</h1>
+            {% if brands is not empty %}
+                <h2>Here are all of the brands!</h2>
+                <ul>
+                    {% for brand in brands %}
+                        <li><a href="/brand/{{ brand.getId }}">{{ brand.getName }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <h4>There are no brands added yet! Use the form below to start adding some!</h4>
+            {% endif %}
+
+            <div class="row">
+                <form action="/add_brand" method="post">
+                        <div class="col-sm-6">
+                            <label for="name">Brand Name</label>
+                            <input name="name" type="text" class="form-control" placeholder="Brand Name" required>
+                        </div>
+            </div>
+                    <button class="btn btn-success" type="submit" name="action">Add Brand</button>
+                </form>
+
+                <form action="/delete_brands" method="post">
+                        <button class="btn btn-danger" type="submit">Delete ALL Brands</button>
+                </form>
+
+            {% include 'footer.html' %}
+        </div>
+    </body>
+</html>
