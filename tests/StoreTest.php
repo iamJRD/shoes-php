@@ -13,10 +13,15 @@
 
     class StoreTest extends PHPUnit_Framework_TestCase
     {
+        protected function tearDown()
+        {
+            Store::deleteAll();
+        }
+
         function testGetName()
         {
             // Arrange
-            $id = null;
+            $id = 1;
             $name = "Jared's Shoe Emporium";
             $test_store = new Store($id, $name);
 
@@ -30,7 +35,7 @@
         function testGetId()
         {
             // Arrange
-            $id = null;
+            $id = 1;
             $name = "Jared's Shoe Emporium";
             $test_store = new Store($id, $name);
 
@@ -39,6 +44,62 @@
 
             // Assert
             $this->assertEquals($id, $result);
+        }
+
+        function testSave()
+        {
+            // Arrange
+            $id = 1;
+            $name = "Jared's Shoe Emporium";
+            $test_store = new Store($id, $name);
+
+            // Act
+            $test_store->save();
+
+            // Assert
+            $result = Store::getAll();
+            $this->assertEquals($test_store, $result[0]);
+        }
+
+        function testGetAll()
+        {
+            // Arrange
+            $id = 1;
+            $name = "Jared's Shoe Emporium";
+            $test_store = new Store($id, $name);
+            $test_store->save();
+
+            $id2 = 2;
+            $name2 = "Drew's Shoes";
+            $test_store2 = new Store($id2, $name2);
+            $test_store2->save();
+
+            // Act
+            $result = Store::getAll();
+
+            // Assert
+            $this->assertEquals([$test_store, $test_store2], $result);
+        }
+
+        function testDeleteAll()
+        {
+            // Arrange
+            $id = 1;
+            $name = "Jared's Shoe Emporium";
+            $test_store = new Store($id, $name);
+            $test_store->save();
+
+            $id2 = 2;
+            $name2 = "Drew's Shoes";
+            $test_store2 = new Store($id2, $name2);
+            $test_store2->save();
+
+            // Act
+            Store::deleteAll();
+
+            // Assert
+            $result = Store::getAll();
+            $this->assertEquals([], $result);
         }
     }
 ?>
