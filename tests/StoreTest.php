@@ -139,5 +139,26 @@
             $result = $test_store->getName();
             $this->assertEquals($new_name, $result);
         }
+
+        function testDelete()
+        {
+            // Arrange
+            $id = 1;
+            $name = "The Shoe Emporium";
+            $test_store = new Store($id, $name);
+            $test_store->save();
+
+            $id2 = 2;
+            $name2 = "The Blue Shoe";
+            $test_store2 = new Store($id2, $name2);
+            $test_store2->save();
+
+            // Act
+            $test_store->delete();
+
+            // Assert
+            $result = Store::getAll();
+            $this->assertEquals([$test_store2], $result);
+        }
     }
 ?>
