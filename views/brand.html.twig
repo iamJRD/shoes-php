@@ -6,18 +6,20 @@
     </head>
     <body>
         <div class="container">
-            <h1>{{ brand.getName }}</h1>
+            <div class="center">
+                <h1>{{ brand.getName }}</h1>
 
-            {% if stores is not empty %}
-                <h4>Here are all of the stores that carry {{ brand.getName }}:</h4>
-                <ul>
-                    {% for store in stores %}
-                        <li><a href="/store/{{ store.getId }}">{{ store.getName }}</a></li>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <h4>This brand currently doesn't have any stores assigned to it! Use the dropdown below add a store!</h4>
-            {% endif %}
+                {% if stores is not empty %}
+                    <h4>Here are all of the stores that carry {{ brand.getName }}:</h4>
+                    <ul>
+                        {% for store in stores %}
+                            <li><a href="/store/{{ store.getId }}">{{ store.getName }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <h4>This brand currently doesn't have any stores assigned to it! Use the dropdown below add a store!</h4>
+                {% endif %}
+            </div>
 
             <br>
 
@@ -41,8 +43,9 @@
 
                 <br>
                 <br>
-
-            {% include 'footer.html' %}
+            <div class="center">
+                {% include 'footer.html' %}
+            </div>
         </div>
     </body>
 </html>

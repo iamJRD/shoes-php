@@ -6,17 +6,19 @@
     </head>
     <body>
         <div class="container">
-            <h1>Brands</h1>
-            {% if brands is not empty %}
-                <h2>Here are all of the brands!</h2>
-                <ul>
-                    {% for brand in brands %}
-                        <li><a href="/brand/{{ brand.getId }}">{{ brand.getName }}</a></li>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <h4>There are no brands added yet! Use the form below to start adding some!</h4>
-            {% endif %}
+            <div class="center">
+                <h1>Brands</h1>
+                {% if brands is not empty %}
+                    <h2>Here are all of the brands!</h2>
+                    <ul>
+                        {% for brand in brands %}
+                            <li><a href="/brand/{{ brand.getId }}">{{ brand.getName }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <h4>There are no brands added yet! Use the form below to start adding some!</h4>
+                {% endif %}
+            </div>
 
             <br>
 
@@ -33,14 +35,15 @@
                 <br>
                 <br>
                 <br>
+                <div class="center">
+                    <form action="/delete_brands" method="post">
+                            <button class="btn btn-danger" type="submit">Delete ALL Brands</button>
+                    </form>
 
-                <form action="/delete_brands" method="post">
-                        <button class="btn btn-danger" type="submit">Delete ALL Brands</button>
-                </form>
+                    <br>
 
-                <br>
-
-            {% include 'footer.html' %}
+                {% include 'footer.html' %}
+            </div>
         </div>
     </body>
 </html>

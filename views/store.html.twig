@@ -6,18 +6,20 @@
     </head>
     <body>
         <div class="container">
-            <h1>{{ store.getName }}</h1>
+            <div class="center">
+                <h1>{{ store.getName }}</h1>
 
-            {% if brands is not empty %}
-                <h4>Here are all of the brands that {{ store.getName }} carries:</h4>
-                <ul>
-                    {% for brand in brands %}
-                        <li><a href="/brand/{{ brand.getId }}">{{ brand.getName }}</a></li>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <h4>This store currently doesn't have any brands assigned to it! Use the dropdown below add a brand!</h4>
-            {% endif %}
+                {% if brands is not empty %}
+                    <h4>Here are all of the brands that {{ store.getName }} carries:</h4>
+                    <ul>
+                        {% for brand in brands %}
+                            <li><a href="/brand/{{ brand.getId }}">{{ brand.getName }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <h4>This store currently doesn't have any brands assigned to it! Use the dropdown below add a brand!</h4>
+                {% endif %}
+            </div>
 
             <br>
 
@@ -50,14 +52,16 @@
             <br>
             <br>
 
-            <form action="/store/{{ store.getId }}/delete" method="post">
-                <input type="hidden" name="_method" value="delete">
-                <button class="btn btn-danger" type="submit">Delete THIS Store</button>
-            </form>
+            <div class="center">
+                <form action="/store/{{ store.getId }}/delete" method="post">
+                    <input type="hidden" name="_method" value="delete">
+                    <button class="btn btn-danger" type="submit">Delete THIS Store</button>
+                </form>
 
-            <br>
+                <br>
 
-            {% include 'footer.html' %}
+                {% include 'footer.html' %}
+            </div>
         </div>
     </body>
 </html>

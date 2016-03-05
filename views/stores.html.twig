@@ -6,41 +6,44 @@
     </head>
     <body>
         <div class="container">
-            <h1>Stores</h1>
-            {% if stores is not empty %}
-                <h2>Here are all of the stores!</h2>
-                <ul>
-                    {% for store in stores %}
-                        <li><a href="/store/{{ store.getId }}">{{ store.getName }}</a></li>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <h4>There are no stores added yet! Use the form below to start adding some!</h4>
-            {% endif %}
-
-            <br>
-
-            <div class="row">
-                <form action="/add_store" method="post">
-                    <div class="col-sm-6">
-                        <label for="name">Store Name:</label>
-                        <input name="name" type="text" class="form-control" placeholder="Store Name" required>
-                    </div>
+            <div class="center">
+                <h1>Stores</h1>
+                {% if stores is not empty %}
+                    <h2>Here are all of the stores!</h2>
+                    <ul>
+                        {% for store in stores %}
+                            <li><a href="/store/{{ store.getId }}">{{ store.getName }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <h4>There are no stores added yet! Use the form below to start adding some!</h4>
+                {% endif %}
             </div>
-                    <button type="submit" class="btn btn-success">Submit</button>
-                </form>
 
             <br>
-            <br>
-            <br>
 
-            <form action="/delete_stores" method="post">
-                    <button class="btn btn-danger" type="submit">Delete ALL Stores</button>
+            <form action="/add_store" method="post">
+                    <label for="name">Store Name:</label>
+                    <input name="name" type="text" class="form-control" placeholder="Store Name" required>
+
+                <br>
+
+                <button type="submit" class="btn btn-success">Submit</button>
             </form>
 
             <br>
+            <br>
+            <br>
 
-            {% include 'footer.html' %}
+            <div class="center">
+                <form action="/delete_stores" method="post">
+                        <button class="btn btn-danger" type="submit">Delete ALL Stores</button>
+                </form>
+
+                <br>
+
+                {% include 'footer.html' %}
+            </div>
         </div>
     </body>
 </html>

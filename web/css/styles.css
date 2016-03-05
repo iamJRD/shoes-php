@@ -1,0 +1,11 @@
+.center {
+    text-align: center;
+}
+
+form input {
+    max-width: 350px;
+}
+
+li {
+    list-style-type: none;
+}

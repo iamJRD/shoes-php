@@ -21,6 +21,12 @@
         return $app['twig']->render('index.html.twig');
     });
 
+    $app->post("/delete_all", function() use ($app) {
+        Store::deleteAll();
+        Brand::deleteAll();
+        return $app['twig']->render('index.html.twig');
+    });
+
 // STORE SPECIFIC ROUTES
     $app->get("/stores", function() use ($app) {
         $stores = Store::getAll();
@@ -105,6 +111,7 @@
     $app->post("/brand/{id}/add_store", function($id) use ($app) {
         $store = Store::find($_POST['store_id']);
         $brand = Brand::find($_POST['brand_id']);
+        $brand->addStore($store);
         $stores = $brand->getStores();
         $all_Stores = Store::getAll();
         return $app['twig']->render('brand.html.twig', array('brand' => $brand, 'stores' => $stores, 'all_stores' => $all_stores));
