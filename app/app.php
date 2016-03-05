@@ -5,8 +5,6 @@
 
     $app = new Silex\Application();
 
-    $app['debug'] = true;
-
     $server = 'mysql:host=localhost:8889;dbname=shoes';
     $username = 'root';
     $password = 'root';
@@ -22,10 +20,10 @@
     $app->get("/", function() use ($app) {
         return $app['twig']->render('index.html.twig');
     });
+
 // STORE SPECIFIC ROUTES
     $app->get("/stores", function() use ($app) {
         $stores = Store::getAll();
-
         return $app['twig']->render('stores.html.twig', array('stores' => $stores));
     });
 
@@ -36,7 +34,6 @@
         $store_name = ucfirst($formatted_name);
         $new_store = new Store($id, $store_name);
         $new_store->save();
-
         $stores = Store::getAll();
         return $app['twig']->render('stores.html.twig', array('stores' => $stores));
     });
@@ -44,7 +41,6 @@
     $app->post("/delete_stores", function() use ($app) {
         Store::deleteAll();
         $stores = Store::getAll();
-
         return $app['twig']->render('stores.html.twig', array('stores' => $stores));
     });
 
@@ -52,7 +48,6 @@
         $store = Store::find($id);
         $brands = $store->getBrands();
         $all_brands = Brand::getAll();
-
         return $app['twig']->render('store.html.twig', array('store' => $store, 'brands' => $brands, 'all_brands' => $all_brands));
     });
 
@@ -62,14 +57,12 @@
         $store->addBrand($brand);
         $brands = $store->getBrands();
         $all_brands = Brand::getAll();
-
         return $app['twig']->render('store.html.twig', array('store' => $store, 'brands' => $brands, 'all_brands' => $all_brands));
     });
 
     $app->delete("/store/{id}/delete", function($id) use ($app) {
         $store = Store::find($id);
         $store->delete();
-
         return $app['twig']->render("stores.html.twig", array('stores' => Store::getAll()));
     });
 
@@ -82,7 +75,6 @@
 // BRAND SPECIFIC ROUTES
     $app->get("/brands", function() use ($app) {
         $brands = Brand::getAll();
-
         return $app['twig']->render('brands.html.twig', array('brands' =>$brands));
     });
 
@@ -93,7 +85,6 @@
         $brand_name = ucfirst($formatted_name);
         $new_brand = new Brand($id, $brand_name);
         $new_brand->save();
-
         $brands = Brand::getAll();
         return $app['twig']->render('brands.html.twig', array('brands' => $brands));
     });
@@ -101,7 +92,6 @@
     $app->post("/delete_brands", function() use ($app) {
         Brand::deleteAll();
         $brands = Brand::getAll();
-
         return $app['twig']->render('brands.html.twig', array('brands' => $brands));
     });
 
@@ -109,7 +99,6 @@
         $brand = Brand::find($id);
         $stores = $brand->getStores();
         $all_stores = Store::getAll();
-
         return $app['twig']->render('brand.html.twig', array('brand' => $brand, 'stores' => $stores, 'all_stores' => $all_stores));
     });
 
@@ -119,7 +108,6 @@
         $brand->addStore($store);
         $stores = $brand->getStores();
         $all_Stores = Store::getAll();
-
         return $app['twig']->render('brand.html.twig', array('brand' => $brand, 'stores' => $stores, 'all_stores' => $all_stores));
     });
 
