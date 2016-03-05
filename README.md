@@ -34,7 +34,7 @@ _This web app will give the user the ability to add shoe brands and shoe stores.
 
 ## Known Bugs
 
-* _There are currently no known bugs._
+* _There is currently an issue with adding Stores->Brand and Brand->Stores where you are able to add the same one multipule times. Need to figure out a conditional for the silex route to prevent it._
 
 ## Support and contact details
 
