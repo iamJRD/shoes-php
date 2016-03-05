@@ -105,7 +105,6 @@
     $app->post("/brand/{id}/add_store", function($id) use ($app) {
         $store = Store::find($_POST['store_id']);
         $brand = Brand::find($_POST['brand_id']);
-        $brand->addStore($store);
         $stores = $brand->getStores();
         $all_Stores = Store::getAll();
         return $app['twig']->render('brand.html.twig', array('brand' => $brand, 'stores' => $stores, 'all_stores' => $all_stores));
