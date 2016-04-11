@@ -1,58 +1,43 @@
-# _Shoe Brands and Stores that carry them --- PHP Database_
+# Shoe Stores and Brands
 
-#### _Web app to add stores and shoe brands to each other, March 2016_
+#### By: Jared Beckler | Epicodus | March 2016
 
-#### By: _**Jared Beckler**_
+This project was used to get familiar with PHP/Silex/Twig/PHPUnit/PHPMyAdmin and will allow the user to enter and save shoe stores and what brands they carry.
 
-## Description
+## Prerequisites
 
-_This web app will give the user the ability to add shoe brands and shoe stores. The user will also be able to assign brands-to-store, and vice-a-versa, as well as display the relationships and update/delete certain properties._
+You will need the following things properly installed on your computer.
 
-## Setup/Installation Requirements
+* [MAMP](https://www.mamp.info/en/downloads/)
 
-* _Clone the Repository_
-* _In your terminal, navigate to the project's main folder and run `composer install` to get Silex, Twig, and PHPUnit installed._
-* _Navigate to the project's web folder using terminal and enter `php -S localhost:8000`_
-* _Open PHPMyAdmin by going to localhost:8080/phpmyadmin in your web browser_
-* _In phpmyadmin choose the Import tab and choose your database file and click "Go"._
-* _In your web browser enter localhost:8000 to view the web app._
+## Installation
 
-**If you are not able to import the databases:**
-* _Open MAMP and Start Servers_
-* _In your terminal enter `/Applications/MAMP/Library/bin/mysql --host=localhost -uroot -proot`_
-* _Next, enter the following commands into your mySQL shell:_
-1. `CREATE DATABASE shoes;`
-2. `USE shoes;`
-3. `CREATE TABLE brands (id serial PRIMARY KEY, name VARCHAR(255));`
-4. `CREATE TABLE stores (id serial PRIMARY KEY, name VARCHAR(255));`
-5. `CREATE TABLE brands_stores (id serial PRIMARY KEY, brand_id INT, store_id INT);`
-6. `CREATE DATABASE shoes_test;`
-7. `USE shoes_test;`
-8. `CREATE TABLE brands (id serial PRIMARY KEY, name VARCHAR(255));`
-9. `CREATE TABLE stores (id serial PRIMARY KEY, name VARCHAR(255));`
-10. `CREATE TABLE brands_stores (id serial PRIMARY KEY, brand_id INT, store_id INT);`
+* `git clone https://github.com/jaredbeckler/shoes-php` this repository
+* Change into the new directory
+* Run `composer install` in the project's home directory
+
+## Running / Development
+
+* Open PHPMyAdmin by going to localhost:8080/phpmyadmin in your web browser
+* In phpmyadmin choose the Import tab and choose your database file and click Go. It's important to make sure you're not importing to a database that already exists, so make sure that a database with the same name as the one you're importing doesn't already exist.
+* Start MAMP
+* In your web browser, go to `localhost:8889` to view the app
 
 ## Known Bugs
 
-* _There is currently an issue with adding Stores->Brand and Brand->Stores where you are able to add the same one multipule times. Need to figure out a conditional for the silex route to prevent it._
+There are currently no known bugs.
 
 ## Support and contact details
 
-_Please contact me through GitHub with any questions, comments, or concerns._
+If you have any issues, questions, ideas, or concerns contact me through GitHub. If you would like to make a contribution to the code, feel free to do so and notify me by e-mail.
 
 ## Technologies Used
 
-* _Composer_
-* _Twig_
-* _Silex_
-* _PHPUnit_
-* _PHP_
-* _mySQL_
-* _Apache Server_
-* _Bootstrap_
+* HTML
+* CSS
+* PHP
+* mySQL
 
 ### License
 
-**This software is licensed under the MIT license.**
-
-Copyright (c) 2016 **_Jared Beckler_**
+Copyright &copy; 2016  |  Jared Beckler  |  Epicodus  |  Portland, OR
